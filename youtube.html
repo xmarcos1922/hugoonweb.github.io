@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube | Hugo On</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to bottom, #D8BFD8, #BA55D3);
+            color: #fff;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        body.fade-out {
+            opacity: 0;
+        }
+
+        .content {
+            text-align: center;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        h1 {
+            font-size: 40px;
+            margin: 0;
+        }
+
+        /* Estilos del menú hamburguesa */
+        .menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        .menu-icon {
+            display: block;
+            width: 30px;
+            height: 3px;
+            background: white;
+            margin: 6px 0;
+            transition: 0.3s;
+        }
+
+        .nav {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: #BA55D3;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .nav a {
+            display: block;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu" onclick="toggleMenu()">
+        <div class="menu-icon"></div>
+        <div class="menu-icon"></div>
+        <div class="menu-icon"></div>
+    </div>
+    <div class="nav" id="nav">
+        <a href="index.html">Inicio</a>
+        <a href="descargas.html">Descargas</a>
+        <a href="youtube.html">YouTube</a>
+        <a href="redessociales.html">Redes Sociales</a>
+    </div>
+    <a href="pagina.html" class="back-button" onclick="transition()">Volver</a>
+    <div class="content">
+        <h1>YouTube</h1>
+        <p>Aquí puedes acceder a mi canal de YouTube.</p>
+    </div>
+
+    <script>
+        function transition() {
+            document.body.classList.add('fade-out');
+        }
+
+        window.onpageshow = function(event) {
+            if (event.persisted) {
+                document.body.classList.remove('fade-out');
+            }
+        };
+
+        function toggleMenu() {
+            const nav = document.getElementById('nav');
+            nav.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
